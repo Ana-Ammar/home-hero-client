@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../AuthProvider/AuthContext";
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
+  const { user } = useContext(AuthContext);
   const links = (
     <>
       <li className="font-medium">
         <NavLink to="/">Home</NavLink>
       </li>
-     <li className="font-medium">
-         <NavLink to="services">Services</NavLink>
-     </li>
+      <li className="font-medium">
+        <NavLink to="services">Services</NavLink>
+      </li>
     </>
   );
 
@@ -41,8 +42,8 @@ const Navbar = () => {
             <ul
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-30 p-2 shadow z-10 space-y-2 text-black"
-             >
-                {links}
+            >
+              {links}
             </ul>
           </div>
 
@@ -52,9 +53,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:flex">
-          <ul className="px-1 flex gap-4 text-[16px]">
-            {links}
-          </ul>
+          <ul className="px-1 flex gap-4 text-[16px]">{links}</ul>
         </div>
         <div className="">
           {user ? (
@@ -75,9 +74,9 @@ const Navbar = () => {
               >
                 <p className="font-bold text-sm m-1">{user?.displayName}</p>
                 <li>
-                  <Link >My Services</Link>
-                  <Link >Add Service</Link>
-                  <Link >My Bookings</Link>
+                  <Link>My Services</Link>
+                  <Link>Add Service</Link>
+                  <Link>My Bookings</Link>
                   <Link to="/profile">Profile</Link>
                   <button>Sign Out</button>
                 </li>

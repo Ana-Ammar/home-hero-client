@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <div className="bg-image">
       <nav
-        className={`navbar md:w-11/12 mx-auto flex justify-between items-center`}
+        className={`navbar md:w-10/12 mx-auto flex justify-between items-center`}
       >
         <div className="flex items-center">
           <div className="dropdown">

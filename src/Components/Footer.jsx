@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+    <footer className="footer sm:footer-horizontal text-neutral-content py-10 px-20">
       <aside>
         <svg
           width="50"

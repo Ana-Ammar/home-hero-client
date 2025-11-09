@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <section className="flex flex-col justify-between h-screen">
       <Navbar />
-      <div className="w-11/12 mx-auto">
+      <div className="w-10/12 mx-auto max-w-7xl">
         <Outlet />
       </div>
       <Footer />

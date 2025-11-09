@@ -37,5 +37,5 @@ a.active {
 }
 
 .section-margin {
-  @apply my-12 mx-auto
+  @apply my-20 mx-auto
 }

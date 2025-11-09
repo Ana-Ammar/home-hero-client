@@ -8,7 +8,7 @@ import { Link } from "react-router";
 
 const Banner = () => {
   return (
-    <div className="section-margin">
+    <div className="my-10">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={true}
@@ -16,7 +16,7 @@ const Banner = () => {
       >
         <SwiperSlide>
           <div
-            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[70vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('/src/assets/home_cleaning.jpg')"
@@ -43,7 +43,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[70vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('/src/assets/Appliance-Repair-Service.jpg')"
@@ -69,7 +69,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[70vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('/src/assets/Outdoor-Care.jpg')"

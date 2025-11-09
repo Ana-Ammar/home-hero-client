@@ -24,7 +24,7 @@ const reviews = [
 const CustomerReviews = () => {
   return (
     <section className="section-margin">
-        <h2 className="section-title">What Our Customers Say</h2>
+        <h2 className="section-title divider">What Our Customers Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review, index) => (
             <div

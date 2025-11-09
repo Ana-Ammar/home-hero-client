@@ -12,7 +12,7 @@ const PopularServices = () => {
 
   return (
     <div className="section-margin">
-      <h1 className="section-title">Popular Services</h1>
+      <h1 className="section-title divider">Popular Services</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {topSevices.map((service) => (
           <Card key={service._id} service={service}></Card>

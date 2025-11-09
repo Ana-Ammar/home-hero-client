@@ -24,7 +24,7 @@ const services = [
 const OurServices = () => {
   return (
     <section className="section-margin">
-        <h2 className="section-title">Our Services</h2>
+        <h2 className="section-title divider">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div

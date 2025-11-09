@@ -5,32 +5,37 @@ import Services from "../Pages/Services/Services";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import PrivateProvider from "../AuthProvider/PrivateProvider";
 
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainLayout />,
-        children: [
-            {
-                index: true,
-                element: <Home />
-            },
-            {
-                path: "/services",
-                element: <Services />
-            },
-            {
-                path: "/login",
-                element: <Login />
-            },
-            {
-                path: "/register",
-                element: <Register />
-            },
-            {
-                path: "/service-details/:id",
-                element: <ProductDetails />
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/service-details/:id",
+        element: (
+          <PrivateProvider>
+            <ProductDetails />
+          </PrivateProvider>
+        ),
+      },
+    ],
+  },
+]);

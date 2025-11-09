@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, signOutUser, setUser } = useContext(AuthContext);
   const links = (
     <>
       <li className="font-medium">
@@ -14,6 +15,26 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleSignOutBtn = () => {
+    signOutUser()
+      .then(() => {
+        setUser(null);
+        Swal.fire({
+          title: "Thank You!",
+          text: "Sign out successfull",
+          icon: "success",
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `${err.message}`,
+        });
+      });
+  };
 
   return (
     <div className="bg-image">
@@ -78,7 +99,7 @@ const Navbar = () => {
                   <Link>Add Service</Link>
                   <Link>My Bookings</Link>
                   <Link to="/profile">Profile</Link>
-                  <button>Sign Out</button>
+                  <button onClick={handleSignOutBtn}>Sign Out</button>
                 </li>
               </ul>
             </div>

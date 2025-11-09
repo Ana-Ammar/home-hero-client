@@ -1,59 +1,58 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
 import { useNavigate, useLocation, Link } from "react-router";
+import { AuthContext } from "../../AuthProvider/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { loginUser, loginWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
 
-//   // 🔹 Handle Email/Password Login
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     signInWithEmailAndPassword(auth, email, password)
-//       .then(() => {
-//         Swal.fire({
-//           icon: "success",
-//           title: "Login Successful",
-//           text: "Welcome back!",
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//         navigate(from, { replace: true });
-//       })
-//       .catch((error) => {
-//         Swal.fire({
-//           icon: "error",
-//           title: "Login Failed",
-//           text: error.message,
-//         });
-//       });
-//   };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    loginUser(email, password)
+      .then((res) => {
+        Swal.fire({
+          title: `Welcome Back ${res.user.displayName}!`,
+          text: "Account Logged In Successfully!",
+          icon: "success",
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `${err.message}`,
+        });
+      });
+  };
 
-//   // 🔹 Handle Google Login
-//   const handleGoogleLogin = () => {
-//     signInWithPopup(auth, provider)
-//       .then(() => {
-//         Swal.fire({
-//           icon: "success",
-//           title: "Google Login Successful",
-//           text: "Welcome back!",
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//         navigate(from, { replace: true });
-//       })
-//       .catch((error) => {
-//         Swal.fire({
-//           icon: "error",
-//           title: "Google Login Failed",
-//           text: error.message,
-//         });
-//       });
-//   };
+
+   const handleGoogleLogin = () => {
+      loginWithGoogle()
+        .then((res) => {
+          Swal.fire({
+            title: `Welcome Back ${res.user.displayName}!`,
+            text: "Login account with google!",
+            icon: "success",
+          });
+          navigate(`${location.state ? location.state : "/"}`);
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: `${err.message}`,
+          });
+        });
+    };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -61,7 +60,9 @@ const Login = () => {
         <h2 className="section-title">User Login</h2>
 
         {/* 🔸 Login Form */}
-        <form className="space-y-4">
+        <form 
+        onSubmit={handleLogin}
+        className="space-y-4">
           {/* Email */}
           <div>
             <label className="block text-sm font-semibold mb-1">Email</label>
@@ -100,9 +101,9 @@ const Login = () => {
         <div className="divider">OR</div>
 
         {/* 🔹 Google Login */}
-        <button
-          className="btn btn-outline w-full flex items-center justify-center gap-2"
-        >
+        <button 
+        onClick={handleGoogleLogin}
+        className="btn btn-outline w-full flex items-center justify-center gap-2">
           <FcGoogle className="text-xl" /> Continue with Google
         </button>
 

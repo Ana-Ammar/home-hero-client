@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthContext";
 
 const Register = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const { createUserWithEmail, updateUserProfile, loginWithGoogle } =
     useContext(AuthContext);
 
@@ -30,29 +31,48 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         updateUserProfile({ displayName, photoURL })
-          .then((res) => {})
+          .then((res) => {
+            console.log(res.user);
+          })
           .catch((err) => {
-            console.log(err.message);
+            setError(err.message);
           });
         Swal.fire({
-          title: "Welcome!",
+          title: `Welcome ${res.user.displayName}!`,
           text: "Account Created Successfully!",
           icon: "success",
         });
+        navigate(`${location.state ? location.state : "/"}`);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `${err.message}`,
+        });
+      });
   };
 
-  //   const handleGoogleLogin = () => {
-  //     // Replace with Google Auth logic
-  //     Swal.fire({
-  //       title: "Google Login Successful!",
-  //       icon: "success",
-  //       timer: 2000,
-  //       showConfirmButton: false,
-  //     });
-  //     navigate("/");
-  //   };
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((res) => {
+        Swal.fire({
+          title: `Welcome ${res.user.displayName}!`,
+          text: "Login account with google!",
+          icon: "success",
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `${err.message}`,
+        });
+      });
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center  p-4">
@@ -119,7 +139,10 @@ const Register = () => {
 
         <div className="divider">OR</div>
 
-        <button className="btn btn-outline w-full mt-2">
+        <button
+          onClick={handleGoogleLogin}
+          className="btn btn-outline w-full mt-2"
+        >
           <FcGoogle />
           Continue with Google
         </button>

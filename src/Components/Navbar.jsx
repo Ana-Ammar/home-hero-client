@@ -47,7 +47,7 @@ const Navbar = () => {
           </div>
 
           <Link to="/" className="text-2xl font-bold">
-            Hero Home
+            Home Hero
           </Link>
         </div>
 

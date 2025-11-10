@@ -10,7 +10,6 @@ const Services = () => {
     axios.get("/services").then((data) => setServices(data.data));
   }, [axios]);
 
-  console.log(services);
   return (
     <div className="section-margin">
       <h2 className="section-title divider">Our Services</h2>

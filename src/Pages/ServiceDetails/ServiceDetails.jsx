@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Swal from "sweetalert2";
-import { AuthContext } from "../../AuthProvider/AuthContext";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ServiceReview from "./ServiceReview";
+import BookingModal from "./BookingModal";
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -20,8 +19,8 @@ const ServiceDetails = () => {
 
 
 
-    if (!service) return <p>Loading service...</p>;
-
+    if (!service) return <p>Loading service...</p>; 
+  
   return (
     <div className="mx-auto space-y-10 my-10">
       <h1 className="section-title">Service Details</h1>
@@ -69,7 +68,7 @@ const ServiceDetails = () => {
           <div className="mt-4 flex gap-3">
             <button
               className="btns flex-1"
-              // onClick={() => navigate(`/booking/${id}`)}
+              onClick={() => document.getElementById("booking-modal").showModal()}
             >
               Book Now
             </button>
@@ -87,7 +86,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-
+        <BookingModal service={service}></BookingModal>      
         <ServiceReview service={service}></ServiceReview>      
     </div>
   );

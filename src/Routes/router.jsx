@@ -7,6 +7,7 @@ import Register from "../Pages/Auth/Register";
 import PrivateProvider from "../AuthProvider/PrivateProvider";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import MyBookings from "../Pages/MyBookings/MyBookings";
+import AddSevices from "../Pages/Services/AddSevices";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateProvider>
             <MyBookings />
+          </PrivateProvider>
+        ),
+      },
+      {
+        path: "/add-service",
+        element: (
+          <PrivateProvider>
+            <AddSevices />
           </PrivateProvider>
         ),
       },

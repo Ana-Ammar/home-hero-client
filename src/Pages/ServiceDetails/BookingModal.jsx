@@ -14,7 +14,7 @@ const BookingModal = ({ service }) => {
       userEmail: user.email,
       serviceId: service._id,
       price: service.price,
-      bookingDate: date,
+      bookingDate: date
     };
 
     axiosSecure
@@ -89,7 +89,7 @@ const BookingModal = ({ service }) => {
               <input
                 type="date"
                 required
-                value={date}
+                value={date || ""}
                 onChange={(e) => setDate(e.target.value)}
                 className="input input-bordered w-full border-secondary focus:border-primary"
               />

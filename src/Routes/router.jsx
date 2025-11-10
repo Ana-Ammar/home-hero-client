@@ -6,6 +6,7 @@ import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import PrivateProvider from "../AuthProvider/PrivateProvider";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
+import MyBookings from "../Pages/MyBookings/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateProvider>
             <ServiceDetails />
+          </PrivateProvider>
+        ),
+      },
+      {
+        path: "/my-bookings",
+        element: (
+          <PrivateProvider>
+            <MyBookings />
           </PrivateProvider>
         ),
       },

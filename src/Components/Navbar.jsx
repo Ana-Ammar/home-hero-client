@@ -97,7 +97,7 @@ const Navbar = () => {
                 <li>
                   <Link>My Services</Link>
                   <Link>Add Service</Link>
-                  <Link>My Bookings</Link>
+                  <Link to="/my-bookings">My Bookings</Link>
                   <Link to="/profile">Profile</Link>
                   <button onClick={handleSignOutBtn}>Sign Out</button>
                 </li>

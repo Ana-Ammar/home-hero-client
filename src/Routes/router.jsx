@@ -8,6 +8,8 @@ import PrivateProvider from "../AuthProvider/PrivateProvider";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import MyBookings from "../Pages/MyBookings/MyBookings";
 import AddSevices from "../Pages/Services/AddSevices";
+import MyServices from "../Pages/Services/MyServices";
+import Profile from "../Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +53,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivateProvider>
             <AddSevices />
+          </PrivateProvider>
+        ),
+      },
+      {
+        path: "/my-services",
+        element: (
+          <PrivateProvider>
+            <MyServices />
+          </PrivateProvider>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateProvider>
+            <Profile />
           </PrivateProvider>
         ),
       },

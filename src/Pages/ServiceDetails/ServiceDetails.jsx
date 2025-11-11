@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ServiceReview from "./ServiceReview";
 import BookingModal from "./BookingModal";
+import { AuthContext } from "../../AuthProvider/AuthContext";
 
 const ServiceDetails = () => {
+  const {user} = useContext(AuthContext)
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const [service, setService] = useState(null);
@@ -16,7 +18,6 @@ const ServiceDetails = () => {
       .then((data) => setService(data.data))
       .catch((err) => console.log(err));
   }, [id, axiosSecure]);
-
 
 
     if (!service) return <p>Loading service...</p>; 
@@ -67,10 +68,10 @@ const ServiceDetails = () => {
 
           <div className="mt-4 flex gap-3">
             <button
-              className="btns flex-1"
+              className={`${user.email === service.email ? "btns btn-disabled!" : "btns"} flex-1`}
               onClick={() => document.getElementById("booking-modal").showModal()}
             >
-              Book Now
+              {`${user.email === service.email ? "Your Service" : "Book Now"}`}
             </button>
             <button
               className="btn btn-outline flex-1"

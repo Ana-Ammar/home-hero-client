@@ -95,7 +95,7 @@ const Navbar = () => {
               >
                 <p className="font-bold text-sm m-1">{user?.displayName}</p>
                 <li>
-                  <Link>My Services</Link>
+                  <Link to="/my-services">My Services</Link>
                   <Link to="/add-service">Add Service</Link>
                   <Link to="/my-bookings">My Bookings</Link>
                   <Link to="/profile">Profile</Link>

@@ -25,7 +25,7 @@ footer {
 }
 
 .btns {
-  @apply btn bg-linear-to-r from-[#323377] to-[#8474fe] shadow-none text-white
+  @apply btn bg-linear-to-br from-[#323377] to-[#8474fe] shadow-none text-white transition
 }
 
 a.active {

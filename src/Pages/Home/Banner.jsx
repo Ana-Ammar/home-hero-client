@@ -16,7 +16,7 @@ const Banner = () => {
       >
         <SwiperSlide>
           <div
-            className="relative h-[70vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('/src/assets/home_cleaning.jpg')"
@@ -30,7 +30,7 @@ const Banner = () => {
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Transform Your Home with Expert Cleaning
               </h1>
-              <p className="text-lg mb-6">
+              <p className="md:text-lg mb-6">
                 From deep cleaning to furniture care — we make your space
                 spotless and refreshing. Trusted professionals, best results.
               </p>
@@ -43,7 +43,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="relative h-[70vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('/src/assets/Appliance-Repair-Service.jpg')"
@@ -57,7 +57,7 @@ const Banner = () => {
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Quick & Reliable Appliance Repairs
               </h1>
-              <p className="text-lg mb-6">
+              <p className="md:text-lg mb-6">
                 We fix your home essentials — AC, fridge, washing machine, and more. Get fast service from verified technicians right at your doorstep.
               </p>
               <Link to="/services" className="btns btn-md px-6">
@@ -69,7 +69,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="relative h-[70vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('/src/assets/Outdoor-Care.jpg')"
@@ -83,7 +83,7 @@ const Banner = () => {
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Bring Nature Closer to Home
               </h1>
-              <p className="text-lg mb-6">
+              <p className="md:text-lg mb-6">
                From lawn maintenance to plant care — our garden experts help you build a refreshing outdoor space that blooms all year round.
               </p>
               <Link to="/services" className="btns btn-md px-6">

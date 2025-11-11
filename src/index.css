@@ -1,11 +1,19 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default;
+  themes: winter --default, night --prefersdark;
 }
 
+@custom-variant night (&:where([data-theme=night], [data-theme=night] *));
+
 @plugin "daisyui/theme" {
-  name: "light";
+  name: "winter";
   default: true;
+  --color-primary: #323377;
+  --color-secondary: #8474fe;
+
+}
+
+[data-theme="night"] {
   --color-primary: #323377;
   --color-secondary: #8474fe;
 }
@@ -25,7 +33,7 @@ footer {
 }
 
 .btns {
-  @apply btn bg-linear-to-br from-[#323377] to-[#8474fe] shadow-none text-white transition
+  @apply btn bg-linear-to-br from-[#323377] to-[#8474fe] shadow-none text-white transition border-0
 }
 
 a.active {

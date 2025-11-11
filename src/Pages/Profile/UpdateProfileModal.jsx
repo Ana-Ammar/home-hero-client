@@ -29,7 +29,7 @@ const UpdateProfileModal = ({ userInfo, setUserInfo }) => {
         id="update-profile-modal"
         className="modal modal-bottom sm:modal-middle"
       >
-        <div className="modal-box relative bg-linear-to-br from-white via-gray-50 to-primary/10 shadow-xl rounded-2xl border border-primary/20 max-w-md">
+        <div className="modal-box relative shadow-xl rounded-2xl border border-primary/20 max-w-md">
           {/* Close Button */}
           <label
             htmlFor="close"
@@ -41,13 +41,13 @@ const UpdateProfileModal = ({ userInfo, setUserInfo }) => {
             ✕
           </label>
 
-          <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
+          <h2 className="text-2xl font-bold text-center mb-6">
             Update Profile
           </h2>
 
           <form onSubmit={handleUpdateProfile} className="space-y-4">
             <div>
-              <label className="block font-medium text-gray-600 mb-1">
+              <label className="block text-sm mb-1">
                 Name
               </label>
               <input
@@ -60,7 +60,7 @@ const UpdateProfileModal = ({ userInfo, setUserInfo }) => {
             </div>
 
             <div>
-              <label className="block font-medium text-gray-600 mb-1">
+              <label className="block text-sm mb-1">
                 Profile Image URL
               </label>
               <input
@@ -72,7 +72,7 @@ const UpdateProfileModal = ({ userInfo, setUserInfo }) => {
               />
             </div>
 
-            <button type="submit" className="btns w-full mt-4">
+            <button type="submit" className="btns w-full!  mt-4">
               Update Profile
             </button>
           </form>

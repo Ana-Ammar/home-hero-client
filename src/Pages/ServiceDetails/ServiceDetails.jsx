@@ -4,6 +4,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ServiceReview from "./ServiceReview";
 import BookingModal from "./BookingModal";
 import { AuthContext } from "../../AuthProvider/AuthContext";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 
 const ServiceDetails = () => {
   const {user} = useContext(AuthContext)
@@ -20,7 +21,7 @@ const ServiceDetails = () => {
   }, [id, axiosSecure]);
 
 
-    if (!service) return <p>Loading service...</p>; 
+    if (!service) return <LoadingSpinner />; 
   
   return (
     <div className="mx-auto space-y-10 my-10">
@@ -35,7 +36,7 @@ const ServiceDetails = () => {
         <div className="absolute bg-black/40 inset-0"></div>
       </div>
 
-      <div className="relative -mt-20 bg-gray-100 shadow-xl rounded-xl p-6 flex flex-col md:flex-row gap-6 z-10">
+      <div className="relative bg-base-100 -mt-20 shadow-xl rounded-xl p-6 flex flex-col md:flex-row gap-6 z-10">
         <div className="md:w-1/2">
           <h1 className="text-3xl md:text-4xl font-bold drop-shadow-lg">
             {service?.service_name}

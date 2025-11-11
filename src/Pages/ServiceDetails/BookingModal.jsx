@@ -34,7 +34,7 @@ const BookingModal = ({ service }) => {
   return (
     <div>
       <dialog id="booking-modal" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-linear-to-br from-white via-gray-50 to-primary/10 shadow-xl rounded-2xl border border-primary/20 relative">
+        <div className="modal-box shadow-xl rounded-2xl border border-primary/20 relative">
           {/* Close Button */}
           <label
             onClick={() => document.getElementById("booking-modal").close()}
@@ -45,13 +45,13 @@ const BookingModal = ({ service }) => {
 
           {/* Top Section */}
           <div className="mb-4 p-4 rounded-lg bg-secondary/10 border border-secondary/20 shadow-sm">
-            <h2 className="text-2xl font-bold text-primary">
+            <h2 className="text-2xl font-bold">
               {service.service_name}
             </h2>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm">
               <strong>Category:</strong> {service.category}
             </p>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm">
               <strong>Provider:</strong> {service.provider_name}
             </p>
           </div>
@@ -59,31 +59,31 @@ const BookingModal = ({ service }) => {
           {/* Booking Form */}
           <form onSubmit={handleBookingForm} className="space-y-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium">
                 Your Email
               </label>
               <input
                 type="email"
                 value={user?.email || ""}
                 readOnly
-                className="input input-bordered w-full bg-gray-100 border-gray-300"
+                className="input input-bordered w-full border-gray-300"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium ">
                 Price
               </label>
               <input
                 type="text"
                 value={`৳ ${service?.price}`}
                 readOnly
-                className="input input-bordered w-full bg-gray-100 border-gray-300"
+                className="input input-bordered w-full border-gray-300"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium">
                 Booking Date
               </label>
               <input

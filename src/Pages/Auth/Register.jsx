@@ -3,9 +3,10 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { createUserWithEmail, updateUserProfile, loginWithGoogle } =
@@ -31,14 +32,10 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         updateUserProfile({ displayName, photoURL })
-          .then((res) => {
-            console.log(res.user);
-          })
-          .catch((err) => {
-            setError(err.message);
-          });
+          .then(() => {})
+          .catch(() => {});
         Swal.fire({
-          title: `Welcome ${res.user.displayName}!`,
+          title: `Welcome to Home Hero!`,
           text: "Account Created Successfully!",
           icon: "success",
         });
@@ -122,14 +119,22 @@ const Register = () => {
             <label className="label">
               <span className="label-text font-medium">Password</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              className="input input-bordered w-full"
-              required
-            />
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                className="input input-bordered w-full pr-10"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute z-20 right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
 
           <button type="submit" className="btns w-full!">

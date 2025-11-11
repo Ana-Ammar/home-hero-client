@@ -6,6 +6,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
@@ -44,15 +45,16 @@ const MyBookings = () => {
     });
   };
 
-  if (!bookings) return <p>Loading service...</p>;
+  if (!bookings) return <LoadingSpinner />;
+  
   return (
-    <div className="mx-auto m-10 overflow-x-auto p-6 bg-linear-to-br from-white via-slate-50 to-gray-100 rounded-2xl shadow-2xl">
-      <h2 className="text-3xl font-bold text-center mb-6 text-slate-700 tracking-wide">
+    <div className="mx-auto m-10 overflow-x-auto p-6 bg-base-200 rounded-2xl shadow-2xl">
+      <h2 className="text-3xl font-bold text-center mb-6 tracking-wide">
         My Bookings
       </h2>
 
-      <table className="table w-full border border-gray-200 rounded-xl">
-        <thead className="bg-slate-100 text-slate-700 uppercase text-sm">
+      <table className="table w-full rounded-xl">
+        <thead className="bg-primary/5 uppercase text-sm">
           <tr>
             <th>#</th>
             <th>Service Info</th>
@@ -63,21 +65,21 @@ const MyBookings = () => {
           </tr>
         </thead>
 
-        <tbody className="text-gray-700">
+        <tbody className="">
           {bookings.map((b, index) => (
             <tr
               key={b._id}
-              className="hover:bg-slate-50 transition-all duration-300 border-b"
+              className=""
             >
               <td className="font-semibold text-center">{index + 1}</td>
 
               {/* Service Info */}
               <td>
                 <div className="flex flex-col">
-                  <span className="font-semibold text-base text-slate-800">
+                  <span className="font-semibold">
                     {b.service_name}
                   </span>
-                  <span className="text-sm text-gray-500 italic">
+                  <span className="text-sm italic">
                     {b.category}
                   </span>
                 </div>
@@ -86,11 +88,11 @@ const MyBookings = () => {
               {/* Provider */}
               <td>
                 <div className="flex flex-col">
-                  <span className="flex items-center gap-1 text-gray-700">
-                    <IoPersonCircleOutline className="text-slate-500" />
+                  <span className="flex items-center gap-1 ">
+                    <IoPersonCircleOutline className="" />
                     {b.provider_name}
                   </span>
-                  <span className="flex items-center gap-1 text-gray-500 text-sm">
+                  <span className="flex items-center gap-1 text-sm">
                     <AiOutlineMail />
                     {b.email}
                   </span>
@@ -101,7 +103,7 @@ const MyBookings = () => {
               <td className="font-semibold text-emerald-600 ">৳ {b.price}</td>
 
               {/* Date */}
-              <td className="text-gray-600">
+              <td className="">
                 <span>{b.bookingDate}</span>
               </td>
 
@@ -121,8 +123,8 @@ const MyBookings = () => {
 
           {bookings.length === 0 && (
             <tr>
-              <td colSpan="6" className="text-center py-8 text-gray-400 italic">
-                No bookings yet 😌
+              <td colSpan="6" className="text-center py-8 italic">
+                No bookings yet
               </td>
             </tr>
           )}

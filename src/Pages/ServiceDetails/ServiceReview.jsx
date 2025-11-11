@@ -50,15 +50,15 @@ const ServiceReview = ({ service }) => {
           {reviews?.map((rev, idx) => (
             <div
               key={idx}
-              className="p-4 border border-primary rounded-xl shadow hover:shadow-lg transition duration-300"
+              className="p-4 border border-gray-300 rounded-xl shadow hover:shadow-lg transition duration-300"
             >
               <p className="font-semibold">{rev.user_name}</p>
               <div className="flex">
                 {Array.from({ length: rev.rating }).map((_, i) => (
-                  <FaStar key={i} className="text-primary mx-0.5 mt-1" />
+                  <FaStar key={i} className="mx-0.5 mt-1" />
                 ))}
               </div>
-              <p className="text-gray-700 mt-1">{rev.comment}</p>
+              <p className=" mt-1">{rev.comment}</p>
               <p className=" mt-1">{rev.created_at}</p>
             </div>
           ))}
@@ -66,7 +66,7 @@ const ServiceReview = ({ service }) => {
 
         {/* Add Review Form */}
 
-        <div className="bg-gray-50 p-6 rounded-2xl shadow-md">
+        <div className="p-6 rounded-2xl shadow-md border border-gray-300">
           <h2 className="text-2xl font-semibold mb-4">Leave a Review</h2>
           <form onSubmit={handleReviewForm} className="space-y-4">
             <input

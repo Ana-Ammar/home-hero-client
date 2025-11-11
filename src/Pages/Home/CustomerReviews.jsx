@@ -42,7 +42,7 @@ const CustomerReviews = () => {
                   <FaStar key={i} className="text-yellow-400 mx-0.5" />
                 ))}
               </div>
-              <p className="text-gray-600">{review.testimonial}</p>
+              <p className="">{review.testimonial}</p>
             </div>
           ))}
         </div>

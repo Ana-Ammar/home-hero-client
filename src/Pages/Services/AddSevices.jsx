@@ -51,8 +51,8 @@ const AddSevices = () => {
   };
 
   return (
-    <div className="section-margin max-w-3xl mx-auto mt-10 bg-white shadow-md rounded-2xl p-8 border border-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-700">
+    <div className="section-margin max-w-3xl mx-auto mt-10 bg-base-200 shadow-md rounded-2xl p-8">
+      <h2 className="text-3xl font-bold text-center mb-8">
         Add a New Service
       </h2>
 
@@ -63,7 +63,7 @@ const AddSevices = () => {
         {/* Left Side */}
         <div className="space-y-4">
           <div>
-            <label className="font-medium text-gray-600">Service Name</label>
+            <label className="font-medium">Service Name</label>
             <input
               type="text"
               className="input input-bordered w-full mt-1"
@@ -73,7 +73,7 @@ const AddSevices = () => {
           </div>
 
           <div>
-            <label className="font-medium text-gray-600">Category</label>
+            <label className="font-medium">Category</label>
             <select
               className="select select-bordered w-full mt-1"
               name="category"
@@ -89,7 +89,7 @@ const AddSevices = () => {
           </div>
 
           <div>
-            <label className="font-medium text-gray-600">Price (৳)</label>
+            <label className="font-medium">Price (৳)</label>
             <input
               type="text"
               className="input input-bordered w-full mt-1"
@@ -99,7 +99,7 @@ const AddSevices = () => {
           </div>
 
           <div>
-            <label className="font-medium text-gray-600">Provider Name</label>
+            <label className="font-medium">Provider Name</label>
             <input
               type="text"
               defaultValue={user.displayName}
@@ -111,7 +111,7 @@ const AddSevices = () => {
           </div>
 
           <div>
-            <label className="font-medium text-gray-600">Email</label>
+            <label className="font-medium">Email</label>
             <input
               type="email"
               className="input input-bordered w-full mt-1"
@@ -126,7 +126,7 @@ const AddSevices = () => {
         {/* Right Side */}
         <div className="space-y-4">
           <div>
-            <label className="font-medium text-gray-600">Image URL</label>
+            <label className="font-medium">Image URL</label>
             <input
               type="text"
               className="input input-bordered w-full mt-1"
@@ -136,7 +136,7 @@ const AddSevices = () => {
           </div>
 
           <div>
-            <label className="font-medium text-gray-600">Description</label>
+            <label className="font-medium">Description</label>
             <textarea
               className="textarea textarea-bordered w-full mt-1"
               rows="5"
@@ -146,7 +146,7 @@ const AddSevices = () => {
           </div>
 
           <div>
-            <label className="font-medium text-gray-600">Status</label>
+            <label className="font-medium">Status</label>
             <select
               className="select select-bordered w-full mt-1"
               name="status"
@@ -158,7 +158,7 @@ const AddSevices = () => {
 
           {/* Tags */}
           <div>
-            <label className="font-medium text-gray-600">Tags</label>
+            <label className="font-medium">Tags</label>
             <div className="flex gap-2 mt-1">
               <input
                 type="text"

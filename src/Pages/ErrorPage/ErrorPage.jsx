@@ -11,9 +11,9 @@ const ErrorPage = () => {
 
       <div className="mx-auto mt-16">
         <img src={errorImg} 
-        className="w-80"></img>
+        className="w-80 "></img>
       </div>
-      <h1 className="text-[#001931] font-semibold text-5xl text-center">
+      <h1 className="font-semibold text-5xl text-center">
         Oops, Page Not Found
       </h1>
       <h2 className="text-center text-[#627382]">

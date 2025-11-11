@@ -3,14 +3,15 @@ import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
 import { useNavigate, useLocation, Link } from "react-router";
 import { AuthContext } from "../../AuthProvider/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loginUser, loginWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -33,26 +34,25 @@ const Login = () => {
       });
   };
 
-
-   const handleGoogleLogin = () => {
-      loginWithGoogle()
-        .then((res) => {
-          Swal.fire({
-            title: `Welcome Back ${res.user.displayName}!`,
-            text: "Login account with google!",
-            icon: "success",
-          });
-          navigate(`${location.state ? location.state : "/"}`);
-        })
-        .catch((err) => {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Something went wrong!",
-            footer: `${err.message}`,
-          });
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((res) => {
+        Swal.fire({
+          title: `Welcome Back ${res.user.displayName}!`,
+          text: "Login account with google!",
+          icon: "success",
         });
-    };
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `${err.message}`,
+        });
+      });
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -60,15 +60,14 @@ const Login = () => {
         <h2 className="section-title">User Login</h2>
 
         {/* 🔸 Login Form */}
-        <form 
-        onSubmit={handleLogin}
-        className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           {/* Email */}
           <div>
             <label className="block text-sm font-semibold mb-1">Email</label>
             <input
               type="email"
               className="input input-bordered w-full "
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -76,15 +75,23 @@ const Login = () => {
           </div>
 
           {/* Password */}
-          <div>
+          <div className="relative">
             <label className="block text-sm font-semibold mb-1">Password</label>
             <input
-              type="password"
-              className="input input-bordered w-full"
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+              className="input input-bordered w-full pr-10"
               required
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute z-20 right-3 top-11 -translate-y-1/2 text-gray-500 hover:text-primary"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
             <div className="text-right mt-1">
               <a href="#" className="text-sm text-secondary hover:underline">
                 Forgot Password?
@@ -101,9 +108,10 @@ const Login = () => {
         <div className="divider">OR</div>
 
         {/* 🔹 Google Login */}
-        <button 
-        onClick={handleGoogleLogin}
-        className="btn btn-outline w-full flex items-center justify-center gap-2">
+        <button
+          onClick={handleGoogleLogin}
+          className="btn btn-outline w-full flex items-center justify-center gap-2"
+        >
           <FcGoogle className="text-xl" /> Continue with Google
         </button>
 

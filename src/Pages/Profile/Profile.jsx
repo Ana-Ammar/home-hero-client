@@ -13,18 +13,18 @@ const Profile = () => {
 
   return (
     <div className="space-y-10 section-margin">
-      <div className="bg-white border border-indigo-100 rounded-3xl shadow-sm hover:shadow-md transition p-8 flex flex-col md:flex-row items-center gap-8">
+      <div className="bg-base-200 rounded-3xl shadow-sm hover:shadow-md transition p-8 flex flex-col md:flex-row items-center gap-8">
         <img
           src={userInfo.photoURL}
           alt="User Photo"
           className="w-32 h-32 rounded-full object-cover ring-4 ring-indigo-100 shadow-md"
         />
         <div className="text-center md:text-left">
-          <h2 className="text-3xl font-bold text-gray-800">
+          <h2 className="text-3xl font-bold">
             {userInfo.displayName}
           </h2>
-          <p className="text-gray-500">{user.email}</p>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="">{user.email}</p>
+          <p className="text-sm mt-1">
             Last Login: {userInfo.lastSignInTime}
           </p>
           <button
@@ -41,7 +41,7 @@ const Profile = () => {
         userInfo={userInfo}
         setUserInfo={setUserInfo}
       ></UpdateProfileModal>
-      <DataCard></DataCard>
+      <DataCard user={user}></DataCard>
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthContext";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "winter");
   const { user, signOutUser, setUser } = useContext(AuthContext);
   const links = (
     <>
@@ -15,6 +16,16 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "night" : "winter");
+  };
 
   const handleSignOutBtn = () => {
     signOutUser()
@@ -37,9 +48,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-image">
+    <div className={`bg-image navbar`}>
       <nav
-        className={`navbar md:w-10/12 mx-auto flex justify-between items-center`}
+        className={`md:w-10/12 mx-auto flex justify-between items-center`}
       >
         <div className="flex items-center">
           <div className="dropdown">
@@ -62,7 +73,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-30 p-2 shadow z-10 space-y-2 text-black"
+              className="menu menu-sm dropdown-content bg-base-100 text-gray-500 rounded-box mt-3 w-30 p-2 shadow z-10 space-y-2"
             >
               {links}
             </ul>
@@ -76,7 +87,20 @@ const Navbar = () => {
         <div className="hidden lg:flex">
           <ul className="px-1 flex gap-4 text-[16px]">{links}</ul>
         </div>
-        <div className="">
+
+
+
+        <div className="flex items-center justify-center">
+          <div className="navbar flex-1">
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            // defaultChecked={localStorage.getItem("theme") === "dark"}
+            checked={theme === "night"}
+            className={`toggle ${theme === "night" ? 'text-base-600' : "text-base-100"}`}
+          />
+        </div>
+
           {user ? (
             <div className="dropdown dropdown-hover">
               <div
@@ -91,7 +115,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="dropdown-content menu bg-white rounded-box w-30 p-2 shadow-sm z-10 right-0 text-black"
+                className="dropdown-content menu bg-base-100 text-gray-500 rounded-box w-30 p-2 shadow-sm z-10 right-0"
               >
                 <p className="font-bold text-sm m-1">{user?.displayName}</p>
                 <li>
@@ -99,7 +123,9 @@ const Navbar = () => {
                   <Link to="/add-service">Add Service</Link>
                   <Link to="/my-bookings">My Bookings</Link>
                   <Link to="/profile">Profile</Link>
-                  <button onClick={handleSignOutBtn}>Sign Out</button>
+                  <button className="btns w-full!" onClick={handleSignOutBtn}>
+                    Sign Out
+                  </button>
                 </li>
               </ul>
             </div>

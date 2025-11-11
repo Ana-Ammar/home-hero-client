@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-image">
+    <div className="sticky top-0 z-50 bg-image">
       <nav
         className={`navbar md:w-10/12 mx-auto flex justify-between items-center`}
       >

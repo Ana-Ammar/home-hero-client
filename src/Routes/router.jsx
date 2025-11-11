@@ -10,6 +10,7 @@ import MyBookings from "../Pages/MyBookings/MyBookings";
 import AddSevices from "../Pages/Services/AddSevices";
 import MyServices from "../Pages/Services/MyServices";
 import Profile from "../Pages/Profile/Profile";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -73,5 +74,6 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+    errorElement: <ErrorPage />
   },
 ]);

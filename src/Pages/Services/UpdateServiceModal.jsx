@@ -237,7 +237,7 @@ const UpdateServiceModal = ({ user, service, setServices }) => {
             {/* Submit Button */}
             <div className="col-span-1 md:col-span-2 mt-6">
               <button type="submit" className="btns w-full!">
-                Add Service
+                Update Service
               </button>
             </div>
           </form>

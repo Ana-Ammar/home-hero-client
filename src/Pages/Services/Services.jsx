@@ -3,6 +3,7 @@ import useAxios from "../../Hooks/useAxios";
 import Card from "../../Components/Card";
 import { FaSearch } from "react-icons/fa";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const axios = useAxios();
@@ -31,14 +32,27 @@ const Services = () => {
       });
   };
 
+  const sectionVariants = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="section-margin">
-      <h2 className="section-title divider">Our Services</h2>
+    <motion.div
+      variants={sectionVariants}
+      initial={{ opacity: 0, y: 50 }}
+      animate="visible"
+      className="my-6 section-margin"
+    >
+    <title>All services</title>
+      <h2 className="section-title md:divider">Our Services</h2>
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-3 mb-6">
-        {/* Price Filter */}
         <div className="flex items-center gap-2">
           <input
             type="text"
@@ -60,7 +74,6 @@ const Services = () => {
           </button>
         </div>
 
-        {/* Search Bar */}
         <div className="flex items-center gap-2 w-full md:w-auto">
           <div className="relative w-full md:w-64">
             <FaSearch
@@ -86,7 +99,7 @@ const Services = () => {
           <Card key={service._id} service={service}></Card>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

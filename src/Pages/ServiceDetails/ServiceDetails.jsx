@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -7,24 +8,36 @@ import { AuthContext } from "../../AuthProvider/AuthContext";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 
 const ServiceDetails = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const [service, setService] = useState(null);
-
 
   useEffect(() => {
     axiosSecure
       .get(`/services/${id}`)
       .then((data) => setService(data.data))
-      .catch((err) => console.log(err));
-  }, [id, axiosSecure]);
+      .catch((err) =>{})}, [id, axiosSecure]);
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
-    if (!service) return <LoadingSpinner />; 
-  
+  if (!service) return <LoadingSpinner />;
+
   return (
-    <div className="mx-auto space-y-10 my-10">
+    <motion.div
+      className="mx-auto space-y-10 my-10"
+      variants={sectionVariants}
+      initial="hidden"
+      animate="visible"
+    >
+    <title>{service?.service_name}</title>
       <h1 className="section-title">Service Details</h1>
       <div className="relative h-96 w-full rounded-lg overflow-hidden shadow-lg">
         <img
@@ -69,8 +82,12 @@ const ServiceDetails = () => {
 
           <div className="mt-4 flex gap-3">
             <button
-              className={`${user.email === service.email ? "btns btn-disabled!" : "btns"} flex-1`}
-              onClick={() => document.getElementById("booking-modal").showModal()}
+              className={`${
+                user.email === service.email ? "btns btn-disabled!" : "btns"
+              } flex-1`}
+              onClick={() =>
+                document.getElementById("booking-modal").showModal()
+              }
             >
               {`${user.email === service.email ? "Your Service" : "Book Now"}`}
             </button>
@@ -88,9 +105,9 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-        <BookingModal service={service}></BookingModal>      
-        <ServiceReview service={service}></ServiceReview>      
-    </div>
+      <BookingModal service={service}></BookingModal>
+      <ServiceReview service={service}></ServiceReview>
+    </motion.div>
   );
 };
 

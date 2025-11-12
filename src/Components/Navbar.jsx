@@ -48,10 +48,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`bg-image navbar`}>
-      <nav
-        className={`md:w-10/12 mx-auto flex justify-between items-center`}
-      >
+    <div className={`bg-image md:navbar px-4`}>
+      <nav className={`md:w-10/12 mx-auto flex justify-between items-center`}>
         <div className="flex items-center">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -88,18 +86,18 @@ const Navbar = () => {
           <ul className="px-1 flex gap-4 text-[16px]">{links}</ul>
         </div>
 
-
-
         <div className="flex items-center justify-center">
           <div className="navbar flex-1">
-          <input
-            onChange={(e) => handleTheme(e.target.checked)}
-            type="checkbox"
-            // defaultChecked={localStorage.getItem("theme") === "dark"}
-            checked={theme === "night"}
-            className={`toggle ${theme === "night" ? 'text-base-600' : "text-base-100"}`}
-          />
-        </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                className={`sr-only peer`}
+                onChange={(e) => handleTheme(e.target.checked)}
+                type="checkbox"
+                checked={theme === "night"}
+              />
+              <div className="w-12 h-7 rounded-full ring-0 peer duration-500 outline-none bg-gray-200 overflow-hidden before:flex before:items-center before:justify-center after:flex after:items-center after:justify-center before:content-['☀️'] before:absolute before:h-6 before:w-6 before:top-1/2 before:bg-white before:rounded-full before:left-1 before:-translate-y-1/2 before:transition-all before:duration-700 peer-checked:before:opacity-0 peer-checked:before:rotate-90 peer-checked:before:-translate-y-full peer-checked:shadow-gray-700 peer-checked:bg-primary after:content-['🌑'] after:absolute after:bg-[#1d1d1d] after:rounded-full after:top-0.5 after:right-1 after:translate-y-full after:w-6 after:h-6 after:opacity-0 after:transition-all after:duration-700 peer-checked:after:opacity-100 peer-checked:after:rotate-180 peer-checked:after:translate-y-0"></div>
+            </label>
+          </div>
 
           {user ? (
             <div className="dropdown dropdown-hover">

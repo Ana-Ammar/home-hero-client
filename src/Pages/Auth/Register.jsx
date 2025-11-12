@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -21,16 +22,25 @@ const Register = () => {
     const password = form.password.value;
 
     // Password validation
-    // if (password.length < 6) {
-    //   return toast.error("Length must be at least 6 characters");
-    // }
-    // if (!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-    //   return toast.error("Must have an Uppercase and lowercase");
-    // }
+
+    if (password.length < 6) {
+      return Swal.fire({
+          title: "Enter Your password again",
+          text: "Password must be at least 6 characters",
+          icon: "error",
+        });
+    }
+    if (!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+      return Swal.fire({
+          title: "Enter Your password again",
+          text: "Must have an Uppercase and lowercase in your password",
+          icon: "error",
+        });
+    }
 
     createUserWithEmail(email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         updateUserProfile({ displayName, photoURL })
           .then(() => {})
           .catch(() => {});
@@ -42,6 +52,7 @@ const Register = () => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
+        // console.log(err)
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -71,9 +82,24 @@ const Register = () => {
       });
   };
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center  p-4">
-      <div className="card w-full max-w-md shadow-xl bg-linear-to-r from-primary/10 to-secondary/10 p-8 rounded-2xl">
+    <title>Register</title>
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        className="card w-full max-w-md shadow-xl bg-linear-to-r from-primary/10 to-secondary/10 p-8 rounded-2xl"
+      >
         <h2 className="section-title">Create an Account</h2>
 
         <form className="space-y-4" onSubmit={handleRegister}>
@@ -161,7 +187,7 @@ const Register = () => {
             Login here
           </Link>
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 };

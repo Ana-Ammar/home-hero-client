@@ -14,7 +14,8 @@ const BookingModal = ({ service }) => {
       userEmail: user.email,
       serviceId: service._id,
       price: service.price,
-      bookingDate: date
+      bookingDate: date,
+      providerEmail: service.email
     };
 
     axiosSecure

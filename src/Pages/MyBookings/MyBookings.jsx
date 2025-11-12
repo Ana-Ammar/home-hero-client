@@ -1,5 +1,5 @@
+import { motion } from "framer-motion";
 import { FaTrashAlt } from "react-icons/fa";
-import { MdOutlineDateRange } from "react-icons/md";
 import { AiOutlineMail } from "react-icons/ai";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -17,7 +17,7 @@ const MyBookings = () => {
     axiosSecure
       .get(`my-bookings?email=${user.email}`)
       .then((res) => setBookings(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {});
   }, [axiosSecure, user]);
 
   const handleDeleteBtn = (id) => {
@@ -38,7 +38,7 @@ const MyBookings = () => {
               text: "Your file has been deleted.",
               icon: "success",
             });
-            setBookings(bookings.filter(b => b._id !== id))
+            setBookings(bookings.filter((b) => b._id !== id));
           }
         });
       }
@@ -46,9 +46,24 @@ const MyBookings = () => {
   };
 
   if (!bookings) return <LoadingSpinner />;
-  
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="mx-auto m-10 overflow-x-auto p-6 bg-base-200 rounded-2xl shadow-2xl">
+    <motion.div
+      variants={sectionVariants}
+      initial="hidden"
+      animate="visible"
+      className="mx-auto m-10 overflow-x-auto p-6 bg-base-200 rounded-2xl shadow-2xl"
+    >
+    <title>My bookings</title>
       <h2 className="text-3xl font-bold text-center mb-6 tracking-wide">
         My Bookings
       </h2>
@@ -67,21 +82,14 @@ const MyBookings = () => {
 
         <tbody className="">
           {bookings.map((b, index) => (
-            <tr
-              key={b._id}
-              className=""
-            >
+            <tr key={b._id} className="">
               <td className="font-semibold text-center">{index + 1}</td>
 
               {/* Service Info */}
               <td>
                 <div className="flex flex-col">
-                  <span className="font-semibold">
-                    {b.service_name}
-                  </span>
-                  <span className="text-sm italic">
-                    {b.category}
-                  </span>
+                  <span className="font-semibold">{b.service_name}</span>
+                  <span className="text-sm italic">{b.category}</span>
                 </div>
               </td>
 
@@ -130,7 +138,7 @@ const MyBookings = () => {
           )}
         </tbody>
       </table>
-    </div>
+    </motion.div>
   );
 };
 

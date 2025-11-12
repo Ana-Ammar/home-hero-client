@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
@@ -9,7 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginUser, loginWithGoogle } = useContext(AuthContext);
+  const { loginUser, loginWithGoogle, passResetEmail } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,9 +55,51 @@ const Login = () => {
       });
   };
 
+
+  const handlePassResetMail = () => {
+    if(!email) {
+     return Swal.fire({
+          icon: "error",
+          title: "Provide Your Email",
+          text: "The email field is empty!",
+        });
+    }
+    passResetEmail(email)
+    .then(() => {
+      Swal.fire({
+          title: "Email Sent",
+          text: "Check your email to reset password",
+          icon: "success",
+        });
+    })
+    .catch(err => {
+          Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `${err.message}`,
+        });
+    })
+  }
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="w-full max-w-md bg-primary/5 shadow-lg rounded-xl p-8">
+    <title>Login</title>
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-full max-w-md bg-primary/5 shadow-lg rounded-xl p-8"
+      >
         <h2 className="section-title">User Login</h2>
 
         {/* 🔸 Login Form */}
@@ -93,9 +136,12 @@ const Login = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
             <div className="text-right mt-1">
-              <a href="#" className="text-sm text-secondary hover:underline">
+              <button
+              type="button"
+              onClick={handlePassResetMail}
+               href="#" className="text-sm text-secondary hover:underline">
                 Forgot Password?
-              </a>
+              </button>
             </div>
           </div>
 
@@ -125,7 +171,7 @@ const Login = () => {
             Create an account
           </Link>
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 };

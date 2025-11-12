@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -44,17 +45,30 @@ const AddSevices = () => {
           text: "Service added successfully",
           icon: "success",
         });
-        e.target.reset()
-        setTags([])
+        e.target.reset();
+        setTags([]);
       }
     });
   };
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="section-margin max-w-3xl mx-auto mt-10 bg-base-200 shadow-md rounded-2xl p-8">
-      <h2 className="text-3xl font-bold text-center mb-8">
-        Add a New Service
-      </h2>
+    <motion.div
+      variants={sectionVariants}
+      initial="hidden"
+      animate="visible"
+      className="section-margin max-w-3xl mx-auto mt-10 bg-base-200 shadow-md rounded-2xl p-8"
+    >
+    <title>Add services</title>
+      <h2 className="text-3xl font-bold text-center mb-8">Add a New Service</h2>
 
       <form
         onSubmit={handleAddService}
@@ -198,7 +212,7 @@ const AddSevices = () => {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

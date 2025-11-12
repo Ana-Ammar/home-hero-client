@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider/AuthContext";
 
 const axiosInstanceSecure = axios.create({
-  baseURL: "http://localhost:5165",
+  baseURL: "https://home-hero-server-nu.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -24,7 +24,7 @@ const useAxiosSecure = () => {
         return res;
       },
       (err) => {
-        console.log(err)
+        // console.log(err)
       }
     );
 

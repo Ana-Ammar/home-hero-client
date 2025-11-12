@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt, FaEnvelope, FaUser } from "react-icons/fa";
 import { AuthContext } from "../../AuthProvider/AuthContext";
@@ -45,9 +46,24 @@ const MyServices = () => {
       }
     });
   };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
   if (loading) return <LoadingSpinner />;
   return (
-    <div className="section-margin flex flex-col justify-center items-center">
+    <motion.div
+      variants={sectionVariants}
+      initial="hidden"
+      animate="visible"
+      className="section-margin flex flex-col justify-center items-center"
+    >
+    <title>My services</title>
       {/* Provider Info Card */}
       <div className="w-full max-w-4xl rounded-2xl shadow-md p-6 mb-8 flex flex-col sm:flex-row items-center gap-6 bg-base-200">
         <img
@@ -57,16 +73,14 @@ const MyServices = () => {
         />
         <div className="flex-1 text-center sm:text-left">
           <h2 className="text-2xl font-semibold flex items-center justify-center sm:justify-start gap-2">
-            <FaUser className="text-primary" /> {user.displayName}
+            <FaUser className="text-primary" /> {user?.displayName}
           </h2>
           <p className="flex items-center justify-center sm:justify-start gap-2 mt-1">
-            <FaEnvelope className="text-primary" /> {user.email}
+            <FaEnvelope className="text-primary" /> {user?.email}
           </p>
           <p className="mt-2 font-medium">
             Total Services:{" "}
-            <span className="font-semibold">
-              {services.length}
-            </span>
+            <span className="font-semibold">{services?.length}</span>
           </p>
         </div>
         <Link to="/add-service" className="btns">
@@ -89,7 +103,7 @@ const MyServices = () => {
           </thead>
           <tbody>
             {services.map((service, i) => (
-              <tr key={service._id} className="hover:bg-slate-100 transition">
+              <tr key={service._id} className="transition">
                 <td>{i + 1}</td>
                 <td className="font-medium">
                   <Link to={`/service-details/${service._id}`}>
@@ -98,7 +112,7 @@ const MyServices = () => {
                 </td>
                 <td>{service.category}</td>
                 <td>{service.price}</td>
-                <td>{service.reviews.length}</td>
+                <td>{service?.reviews?.length}</td>
                 <td className="flex justify-center gap-3">
                   <button
                     onClick={() => {
@@ -106,7 +120,7 @@ const MyServices = () => {
                         .getElementById("update-service-modal")
                         .showModal();
                     }}
-                    className="btns btn-sm! text-white flex items-center gap-1"
+                    className="btns btn-sm! text-base-100 flex items-center gap-1"
                   >
                     <FaEdit /> Edit
                   </button>
@@ -126,7 +140,7 @@ const MyServices = () => {
               </tr>
             ))}
 
-            {services.length === 0 && (
+            {services?.length === 0 && (
               <tr>
                 <td
                   colSpan="6"
@@ -139,7 +153,7 @@ const MyServices = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

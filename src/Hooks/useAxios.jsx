@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5165",
+  baseURL: "https://home-hero-server-nu.vercel.app",
 });
 
 const useAxios = () => {

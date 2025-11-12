@@ -7,13 +7,15 @@ const MainLayout = () => {
   const navigation = useNavigation();
 
   return (
-    <section className="flex flex-col justify-between h-screen">
+    <section className="flex flex-col h-screen justify-between">
       <Navbar />
 
       <div className="w-10/12 mx-auto max-w-7xl">
         {navigation.state === "loading" ? <LoadingSpinner /> : <Outlet />}
       </div>
-      <Footer />
+      <div className="">
+        <Footer />
+      </div>
     </section>
   );
 };

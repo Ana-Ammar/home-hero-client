@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { FaStar } from "react-icons/fa";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 
 const ServiceReview = ({ service }) => {
@@ -35,8 +36,21 @@ const ServiceReview = ({ service }) => {
       });
   };
 
+    const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div>
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+    >
       {/* Reviews Section */}
       <div className="space-y-6">
         <h2 className="text-3xl font-semibold">
@@ -95,13 +109,15 @@ const ServiceReview = ({ service }) => {
               max="5"
               required
             />
-            <button type="submit" className="btns w-full! ">
-              Submit Review
+            <button type="submit" className={`w-full! ${
+                user.email === service.email ? "btns btn-disabled!" : "btns"
+              }`}>
+              {`${user.email === service.email ? "Your Service, You can't review here!" : "Submit Review"}`}
             </button>
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -7,8 +8,21 @@ import "swiper/css/autoplay";
 import { Link } from "react-router";
 
 const Banner = () => {
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
   return (
-    <div className="my-10">
+    <motion.div
+      variants={sectionVariants}
+      initial="hidden"
+      animate="visible"
+      className="my-10"
+    >
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={true}
@@ -16,10 +30,9 @@ const Banner = () => {
       >
         <SwiperSlide>
           <div
-            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
+            className="relative h-[80vh]  bg-cover bg-center rounded-2xl"
             style={{
-              backgroundImage:
-                "url('/src/assets/home_cleaning.jpg')"
+              backgroundImage: "url('https://i.ibb.co.com/yFwSzZgP/home-cleaning.jpg')",
             }}
           >
             {/* Black Overlay */}
@@ -27,7 +40,7 @@ const Banner = () => {
 
             {/* Content */}
             <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 text-white max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">
                 Transform Your Home with Expert Cleaning
               </h1>
               <p className="md:text-lg mb-6">
@@ -46,19 +59,19 @@ const Banner = () => {
             className="relative h-[80vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
-                "url('/src/assets/Appliance-Repair-Service.jpg')"
+                "url('https://i.ibb.co.com/5gJ4LRkT/Appliance-Repair-Service.jpg')",
             }}
           >
-            
             <div className="absolute inset-0 bg-black/60 rounded-2xl"></div>
 
-        
             <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 text-white max-w-2xl">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Quick & Reliable Appliance Repairs
               </h1>
               <p className="md:text-lg mb-6">
-                We fix your home essentials — AC, fridge, washing machine, and more. Get fast service from verified technicians right at your doorstep.
+                We fix your home essentials — AC, fridge, washing machine, and
+                more. Get fast service from verified technicians right at your
+                doorstep.
               </p>
               <Link to="/services" className="btns btn-md px-6">
                 Explore Services
@@ -71,20 +84,18 @@ const Banner = () => {
           <div
             className="relative h-[80vh] bg-cover bg-center rounded-2xl"
             style={{
-              backgroundImage:
-                "url('/src/assets/Outdoor-Care.jpg')"
+              backgroundImage: "url('https://i.ibb.co.com/LX8DSZpB/Outdoor-Care.jpg')",
             }}
           >
-            
             <div className="absolute inset-0 bg-black/60 rounded-2xl"></div>
 
-        
             <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 text-white max-w-2xl">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Bring Nature Closer to Home
               </h1>
               <p className="md:text-lg mb-6">
-               From lawn maintenance to plant care — our garden experts help you build a refreshing outdoor space that blooms all year round.
+                From lawn maintenance to plant care — our garden experts help
+                you build a refreshing outdoor space that blooms all year round.
               </p>
               <Link to="/services" className="btns btn-md px-6">
                 Explore Services
@@ -92,10 +103,8 @@ const Banner = () => {
             </div>
           </div>
         </SwiperSlide>
-
-
       </Swiper>
-    </div>
+    </motion.div>
   );
 };
 

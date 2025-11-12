@@ -72,7 +72,7 @@ const UpdateServiceModal = ({ user, service, setServices }) => {
         id="update-service-modal"
         className="modal modal-bottom sm:modal-middle"
       >
-        <div className="modal-box bg-linear-to-br from-white via-gray-50 to-primary/10 shadow-xl rounded-2xl border border-primary/20 relative max-w-2xl">
+        <div className="modal-box shadow-xl rounded-2xl border border-primary/20 relative max-w-2xl">
           {/* Close Button */}
           <label
             onClick={() =>
@@ -82,7 +82,7 @@ const UpdateServiceModal = ({ user, service, setServices }) => {
           >
             ✕
           </label>
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-700">
+          <h2 className="text-3xl font-bold text-center mb-8">
             Update your service
           </h2>
 
@@ -93,7 +93,7 @@ const UpdateServiceModal = ({ user, service, setServices }) => {
             {/* Left Side */}
             <div className="space-y-4">
               <div>
-                <label className="font-medium text-gray-600">
+                <label className="font-medium">
                   Service Name
                 </label>
                 <input
@@ -106,7 +106,7 @@ const UpdateServiceModal = ({ user, service, setServices }) => {
               </div>
 
               <div>
-                <label className="font-medium text-gray-600">Category</label>
+                <label className="font-medium">Category</label>
                 <select
                   className="select select-bordered w-full mt-1"
                   name="category"

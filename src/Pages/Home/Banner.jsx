@@ -30,7 +30,7 @@ const Banner = () => {
       >
         <SwiperSlide>
           <div
-            className="relative h-[80vh]  bg-cover bg-center rounded-2xl"
+            className="relative md:h-[70vh] h-[60vh]  bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage: "url('https://i.ibb.co.com/yFwSzZgP/home-cleaning.jpg')",
             }}
@@ -56,7 +56,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
+            className="relative md:h-[70vh] h-[60vh] bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage:
                 "url('https://i.ibb.co.com/5gJ4LRkT/Appliance-Repair-Service.jpg')",
@@ -65,7 +65,7 @@ const Banner = () => {
             <div className="absolute inset-0 bg-black/60 rounded-2xl"></div>
 
             <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 text-white max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">
                 Quick & Reliable Appliance Repairs
               </h1>
               <p className="md:text-lg mb-6">
@@ -82,7 +82,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="relative h-[80vh] bg-cover bg-center rounded-2xl"
+            className="relative md:h-[70vh] h-[60vh]  bg-cover bg-center rounded-2xl"
             style={{
               backgroundImage: "url('https://i.ibb.co.com/LX8DSZpB/Outdoor-Care.jpg')",
             }}
@@ -90,7 +90,7 @@ const Banner = () => {
             <div className="absolute inset-0 bg-black/60 rounded-2xl"></div>
 
             <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 text-white max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">
                 Bring Nature Closer to Home
               </h1>
               <p className="md:text-lg mb-6">

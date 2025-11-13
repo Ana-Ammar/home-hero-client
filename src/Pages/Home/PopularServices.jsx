@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import Card from "../../Components/Card";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const PopularServices = () => {
   const axios = useAxios();
@@ -23,6 +25,9 @@ const PopularServices = () => {
           <Card key={service._id} service={service}></Card>
         ))}
       </div>
+     <div className="flex justify-center items-center mt-8">
+       <Link to="/services" className="btns">See all services <FaArrowRight /></Link>
+     </div>
     </div>
   );
 };

@@ -33,7 +33,7 @@ footer {
 }
 
 .btns {
-  @apply btn bg-linear-to-br from-[#323377] to-[#8474fe] shadow-none text-white transition border-0 hover:scale-95  duration-300
+  @apply btn bg-linear-to-br from-[#323377] to-[#8474fe] shadow-none text-white transition border-0 hover:scale-95  duration-300 active:scale-90 transition transform duration-100
 }
 
 a.active {

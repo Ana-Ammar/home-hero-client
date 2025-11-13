@@ -1,16 +1,67 @@
-# React + Vite
+# 🏠 Hero Home
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Hero Home** is a modern React-based service booking web application where users can explore various home services and packages, view details, and make bookings easily.  It combines clean UI, smooth animations, and Firebase-powered authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+| Category | Tools / Libraries |
+|-----------|-------------------|
+| Frontend Framework | **React.js (Vite)** |
+| Routing | **React Router** |
+| UI Styling | **Tailwind CSS + DaisyUI** |
+| Icons | **React Icons** |
+| Animations | **Framer Motion** |
+| Alerts / Dialogs | **SweetAlert2** |
+| Slider | **Swiper.js (React Swiper)** |
+| API & HTTP Requests | **Axios** |
+| Authentication | **Firebase Auth** |
+| Backend Framework | **Node.js + Express.js** |
+| Database | **MongoDB** |
+| Hosting | **Vercel (Backend)** |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Core Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🧩 Hero Banner
+- Homepage includes a **Swiper-based banner slider** with smooth animations.
+
+### 🧾 Services
+- Users can **view available services**  
+- Users can **book a service**  
+- Users can **post reviews** on completed services  
+- Logged-in users can **add their own services**  
+- Users can **update or delete their own services**  
+- Users can **view their services and bookings in a table format**
+
+### 🔐 Authentication
+- Firebase **Email/Password signup and login**  
+- Protected routes for logged-in users  
+- SweetAlert2 popups for success/error messages
+
+### 🎠 UI & Animations
+- **Framer Motion** for page transitions. 
+- **Tailwind + DaisyUI** for clean, responsive, and modern UI  
+- Button click scale, hover effects.
+
+### 🌐 Backend & API
+- **Express.js** RESTful API connected to **MongoDB Atlas**  
+- CRUD operations for services and bookings  
+- Hosted on **Vercel** for scalable access  
+- Sample endpoints:  
+```bash
+GET    /top-rated-services
+GET    /api/services
+```
+
+---
+
+## 🌎 Live Links
+
+🖥️ **Frontend (Live Site):**  
+[🔗 https://home-hero.web.app/](https://home-hero.web.app)
+
+⚙️ **Backend / API (Server):**  
+[🔗 https://home-hero-server-nu.vercel.app/](https://home-hero-server-nu.vercel.app/)

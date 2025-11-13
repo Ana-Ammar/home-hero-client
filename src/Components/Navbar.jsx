@@ -48,7 +48,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`bg-image md:navbar px-4`}>
+    <div className={`bg-image md:navbar px-6`}>
       <nav className={`md:w-10/12 mx-auto flex justify-between items-center`}>
         <div className="flex items-center">
           <div className="dropdown">

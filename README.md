@@ -56,6 +56,18 @@ GET    /top-rated-services
 GET    /api/services
 ```
 
+## 🚀 Run Locally
+
+Follow these steps to run **Home Hero** on your local machine:
+
+### Clone the client site repository
+```bash
+git clone https://github.com/Ana-Ammar/home-hero-client.git
+cd home-hero-client
+npm install
+npm run dev
+visit: http://localhost:5173
+```
 ---
 
 ## 🌎 Live Links
